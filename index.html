@@ -5,19 +5,38 @@
 <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
 </head>
 <body>
-    <div id="root"></div>
-    <script type="text/babel">
+  <div id="root"></div>
+  <script type="text/babel">
 
     class Hello extends React.Component {
-        render() {
-            return <h1>Hello {this.props.message}</h1>;
-        }
+      constructor(){
+        super();
+        this.state = {
+          message: "my pal (from state)!"
+        };
+        this.updateMessage = this.updateMessage.bind(this);
+      }
+
+      updateMessage() {
+        this.setState({
+          message: "my pal (from changed state)!"
+        });
+      }
+
+      render() {
+        return (
+          <div>
+            <h1>Hello {this.state.message}</h1>
+            <button onClick={this.updateMessage}>Click me!</button>
+          </div>
+        );
+      }
     }
     ReactDOM.render(
-        <Hello message="Friendo!"/>,
-        document.getElementById("root")
+      <Hello message="Friendo!"/>,
+      document.getElementById("root")
     );
 
-    </script>
+  </script>
 </body>
 </html>
