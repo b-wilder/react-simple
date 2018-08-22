@@ -38,15 +38,15 @@
         this.handleClick = this.handleClick.bind(this);
       }
 
-      handleClick(e){
-        this.props.setMessageCallback(e.target.parentNode.firstElementChild.value);
+      handleClick(){
+        this.props.setMessageCallback(document.getElementById('submitVal').value);
       }
 
       render() {
         const messageVal = this.props.message;
         return(
           <form>
-            <input name="submitVal" type="text" value={messageVal}/>
+            <input id="submitVal" type="text" value={messageVal}/>
             <button name="Submit" type="button" onClick={ this.handleClick }>
               Submit
             </button>
