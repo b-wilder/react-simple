@@ -11,50 +11,51 @@
     class Hello extends React.Component {
       constructor(props){
         super(props);
-        this.state = {
-            messageFromForm: null
-        };
         this.setMessage = this.setMessage.bind(this);
+        this.state = {
+          messageFromForm: ''
+        };
       }
 
-      setMessage = (messageFromFormVal) => {
+      setMessage(messageFromFormVal) {
         this.setState({ messageFromForm: messageFromFormVal });
       }
 
       render() {
+        const messageFromFormVal = this.state.messageFromForm;
         return (
           <div>
-            <h1>Hello {this.state.messageFromForm}</h1>
-            <InputForm setMessageCallback={this.setMessage}/>
+            <h1>Hello {messageFromFormVal}</h1>
+            <InputForm setMessageCallback={this.setMessage} messageVal={messageFromFormVal}/>
           </div>
         );
       }
     }
 
     class InputForm extends React.Component {
-      constructor(){
-        super();
+      constructor(props){
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
         this.state = {
-          message: "my pal (from state)!"
+          message: ''
         };
-        this.updateMessage = this.updateMessage.bind(this);
       }
 
-      updateMessage() {
-        this.props.setMessageCallback(this.state.message);
+      handleChange(e){
+        this.props.setMessageCallback(e.target.value);
       }
 
       render() {
-        return (
+        const messageVal = this.props.message;
+        return(
           <form>
-            <input type="text" value={this.state.message}/>
-            <button onClick={this.updateMessage}>Click me!</button>
+            <input type="text" value={messageVal} onChange={this.handleChange}/>
           </form>
         );
       }
     }
     ReactDOM.render(
-      <Hello message="Friendo!"/>,
+      <Hello/>,
       document.getElementById("root")
     );
 
