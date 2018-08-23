@@ -9,7 +9,7 @@ class InputForm extends React.Component {
   }
 
   handleClick(){
-    dispatch(changeMessage(document.getElementById('submitVal').value))
+    this.props.setMessage(document.getElementById('submitVal').value)
   }
 
   render() {

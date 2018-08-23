@@ -12,7 +12,7 @@ class Hello extends React.Component {
   }
 
   setMessage(messageFromFormVal) {
-    this.setState({ messageFromForm: messageFromFormVal });
+    this.props.changeMessage(messageFromFormVal);
   }
 
   render() {
