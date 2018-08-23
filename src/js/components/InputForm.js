@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { changeMessage } from "../actions/changeMessage"
 
 class InputForm extends React.Component {
   constructor(props){
@@ -8,7 +9,7 @@ class InputForm extends React.Component {
   }
 
   handleClick(){
-    this.props.setMessageCallback(document.getElementById('submitVal').value);
+    dispatch(changeMessage(document.getElementById('submitVal').value))
   }
 
   render() {
