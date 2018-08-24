@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Hello from "../components/Hello";
-import * as actions from "../actions";
+import * as actions from "../actions/*";
 import rootReducer from "../reducers/rootReducer";
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
@@ -15,16 +15,16 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators(actions, dispatch);
 }
 
-class Hello extends React.Component {
+class App extends React.Component {
   constructor(props){
     super(props);
   }
 
-  ReactDOM.render() {
+  render() {
     return (
       <Hello/>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Hello)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
