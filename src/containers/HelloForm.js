@@ -10,8 +10,8 @@ const mapStateToProps = state => ({
   message: getMessage(state.message)
 });
 
-const mapDispatchToProps = dispatch => ({
-  updateHelloMessage: message => dispatch(updateHelloMessage(message))
+const mapDispatchToProps = (dispatch, message) => ({
+  updateHelloMessage: () => dispatch(updateHelloMessage(message))
 });
 
 export default connect(
