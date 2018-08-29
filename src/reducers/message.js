@@ -1,4 +1,4 @@
-const message = (state = [], action) => {
+const message = (state = 'Friendo!', action) => {
   switch (action.type) {
     case 'UPDATE_HELLO_MESSAGE':
       return
